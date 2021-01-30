@@ -35,9 +35,10 @@ if __name__ == '__main__':
 
         for j, cnt in enumerate(contours):
             if cv2.contourArea(cnt) > 10000.0:
-                cv2.drawContours(img, contours, j, (0, 255, 0), 3)
+                # cv2.drawContours(img, contours, j, (0, 255, 0), 3)
                 x, y, w, h = cv2.boundingRect(cnt)
-                rects.append(['', img[y:y + h, x:x + w]])
+                plt.imsave(f'images/{i}_{j}.png', img[y:y + h, x:x + w])
+                rects.append(img[y:y + h, x:x + w])
 
         plt.figure(figsize=(12, 10))
         plt.imshow(img)
